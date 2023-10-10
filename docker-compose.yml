@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  calcifer:
+    build:
+      context: ./calcifer
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+     - ./calcifer:/app
