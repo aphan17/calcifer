@@ -2,16 +2,16 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.core import serializers
 from django.views.decorators.http import require_http_methods
+import json
 
 
-
-from json import JSONEncoder
+from common.json import ModelEncoder
 
 from .models import Recipe
 # Create your views here.
 
 
-class RecipeEncoder(JSONEncoder):
+class RecipeEncoder(ModelEncoder):
     model = Recipe
     properties = [
         "name",
@@ -23,9 +23,10 @@ class RecipeEncoder(JSONEncoder):
 def list_recipes(request):
     if request.method == "GET":
         recipes = Recipe.objects.all()
-        recipes_json = serializers.serialize("json", recipes)
         return JsonResponse(
-            {"recipes": recipes_json},
+            {"recipes": recipes},
+            encoder=RecipeEncoder,
+            safe=False,
         )
     else:
         response = JsonResponse(
