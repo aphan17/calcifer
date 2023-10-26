@@ -47,7 +47,7 @@ def list_recipes(request):
 
 
 @require_http_methods(["GET", "DELETE"])
-def show_recipe(request, id):
+def recipe_detail(request, id):
     if request.method == "GET":
         try:
             recipe = Recipe.objects.get(id=id)
