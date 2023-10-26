@@ -19,7 +19,7 @@ class RecipeEncoder(ModelEncoder):
     ]
 
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "POST"])
 def list_recipes(request):
     if request.method == "GET":
         recipes = Recipe.objects.all()
@@ -29,8 +29,49 @@ def list_recipes(request):
             safe=False,
         )
     else:
-        response = JsonResponse(
-            {"message": "unable to retrieve recipes"}
-        )
-        response.status_code = 400
-        return response
+        content = json.loads(request.body)
+        try:
+            recipe = Recipe.objects.create(**content)
+            return JsonResponse(
+                recipe,
+                encoder=RecipeEncoder,
+                safe=False,
+            )
+        except:
+            response = JsonResponse(
+                {"message": "unable to create recipe"}
+            )
+            response.status_code = 400
+            return response
+
+
+
+@require_http_methods(["GET", "DELETE"])
+def show_recipe(request, id):
+    if request.method == "GET":
+        try:
+            recipe = Recipe.objects.get(id=id)
+            return JsonResponse(
+                recipe,
+                encoder=RecipeEncoder,
+                safe=False
+            )
+        except Recipe.DoesNotExist:
+            response = JsonResponse(
+                {"message": "recipe does not exist"}
+            )
+            response.status_code = 404
+            return response
+    else:
+        try:
+            recipe = Recipe.objects.get(id=id)
+            recipe.delete()
+            return JsonResponse(
+                {"message":"recipe deleted"}
+            )
+        except Recipe.DoesNotExist:
+            response = JsonResponse (
+                {"message": "recipe does not exist"}
+            )
+            response.status_code = 404
+            return response
