@@ -25,13 +25,19 @@ SECRET_KEY = "django-insecure-u4v@dmx001j$&qpadg23$9(ew(j^nko0v4i6j^0a2k4hx2=a+e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS=["localhost"]
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3001",
+]
 
 # Application definition
 
 INSTALLED_APPS = [
     "recipes.apps.RecipesConfig",
+    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
