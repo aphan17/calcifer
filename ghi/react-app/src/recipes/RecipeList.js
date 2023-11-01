@@ -8,7 +8,7 @@ const RecipeList = () => {
         const url = "http://localhost:8000/recipes/"
         const response = await fetch(url);
         if (response.ok) {
-            const data = response.json();
+            const data = await response.json();
             const recipes = data.recipes;
             setRecipes(recipes);
         }
