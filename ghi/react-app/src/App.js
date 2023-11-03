@@ -5,6 +5,7 @@ import MainPage from './MainPage';
 import RecipeList from './recipes/RecipeList';
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
