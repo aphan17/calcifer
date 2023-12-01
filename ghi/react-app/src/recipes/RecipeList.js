@@ -44,9 +44,18 @@ function RecipeList() {
 
     return (
         <div>
+            <div>
+            introduction of recipe page here.
+            </div>
+            <div>
+            filter categories here, all recipes below
+            </div>
+            <div>
             {recipes.map((recipe) => (
                 <RecipeCard recipe={recipe} key={recipe.id} />
             ))}
+            </div>
+
         </div>
     );
 }
