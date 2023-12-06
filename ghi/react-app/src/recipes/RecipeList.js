@@ -44,13 +44,64 @@ function RecipeList() {
 
     return (
         <div>
-            <div>
-            introduction of recipe page here.
+            <div className="introheader">
+                <h1 className="text-left px-4 py-2 text-2xl font-bold">Recipe Index</h1>
+                <p class="text-left px-4">
+                Here is the recipe index, browse by category or course.
+                </p>
             </div>
-            <div>
-            filter categories here, all recipes below
-            </div>
-            <div>
+            <nav className="nav-recipes">
+                <div>
+                    <ul>
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">By Category<svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"  fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            </button>
+                            {/* Dropdown Menu */}
+                            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Protein</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Veggies</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Savory Carbs</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Sweets</a>
+                                </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">By Course<svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"  fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                            </button>
+                            {/* Dropdown Menu */}
+                            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Breakfast</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Lunch</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Desserts</a>
+                                </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <div className="recipes">
             {recipes.map((recipe) => (
                 <RecipeCard recipe={recipe} key={recipe.id} />
             ))}
