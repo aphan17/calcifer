@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Footer from './Footer'
 import MainPage from './MainPage';
 import RecipeList from './recipes/RecipeList';
+import RecipePage from './recipes/RecipePage';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage/>}/>
           <Route path="/recipes" element={<RecipeList/>}/>
+          <Route path="/recipes/1" element={<RecipePage/>}/>
         </Routes>
       <Footer/>
 

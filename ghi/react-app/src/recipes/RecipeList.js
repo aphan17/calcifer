@@ -43,7 +43,7 @@ function RecipeList() {
         <div>
             <div className="introheader">
                 <h1 className="text-left px-4 py-2 text-2xl font-bold">Recipe Index</h1>
-                <p class="text-left px-4">
+                <p className="text-left px-4">
                 Here is the recipe index, browse by category or course.
                 </p>
             </div>
@@ -51,11 +51,15 @@ function RecipeList() {
             <div>
                 <nav className="recipeNav">
                     <ul className="recipeCategories">
-                        <li className="recipeList"></li>
+                        <li className="recipeList">
                             <button>Category</button>
-                        <li className="recipeList">Collection</li>
-                            <button>Category</button>
-                        <li className="recipeList">Course</li>
+                        </li>
+                        <li className="recipeList">
+                            <button>Collection</button>
+                        </li>
+                        <li className="recipeList">
+                            <button>Course</button>
+                        </li>
                     </ul>
                 </nav>
 
